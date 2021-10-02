@@ -313,6 +313,9 @@
                 if (info === "model") {
                     template += '<i class="fa fa-camera-retro" aria-hidden="true"></i> ' + exif["model"] + '&nbsp;&nbsp;';
                 }
+                if (info === "title") {
+                    template += '<i class="fa fa-camera-retro" aria-hidden="true"></i> ' + exif["title"] + '&nbsp;&nbsp;';
+                }
                 if (info === "aperture") {
                     template += '<i class="fa fa-dot-circle-o" aria-hidden="true"></i> f/' + exif["aperture"] + '&nbsp;&nbsp;';
                 }
@@ -331,6 +334,10 @@
 
             if (EXIF.getTag(img, "Model") !== undefined) {
                 exifData.model = EXIF.getTag(img, "Model");
+            }
+
+            if (EXIF.getTag(img, "XPTitle") !== undefined) {
+                exifData.title = EXIF.getTag(img, "XPTitle");
             }
 
             if (EXIF.getTag(img, "FNumber") !== undefined) {
