@@ -1,3 +1,65 @@
+
+    <!-- Footer -->
+    <footer id="footer">
+        <h1><a href="{{ site.baseurl }}"><strong>{{ site.header.title }}</strong> {{ site.header.subtitle }}</a></h1>
+        <ul class="icons">
+            {% if site.social_urls.instagram %}
+                <li>
+                    <a href="{{ site.social_urls.instagram }}" class="icon fa-instagram">
+                        <span class="label">Instagram</span>
+                    </a>
+                </li>
+            {% endif %}
+            {% if site.social_urls.facebook %}
+                <li>
+                    <a href="{{ site.social_urls.facebook }}" class="icon fa-facebook">
+                        <span class="label">Facebook</span>
+                    </a>
+                </li>
+            {% endif %}
+        </ul>
+        <nav>
+            <ul>
+                <li><a href="#contact" class="icon fa-paper-plane">Contacto</a></li>
+            </ul>
+        </nav>
+    </footer>
+
+    <footer id="contact" class="panel">
+        <div class="inner split">
+            <div>
+                <section>
+                    <h2>{{ site.footer.name }}</h2>
+                    <p>{{ site.footer.bio }}</p>
+                </section>
+                <p class="copyright">
+                    &copy; {{ site.author }}. 2021
+                </p>
+            </div>
+            <div>
+                <section>
+                    <h2>Contacta conmigo</h2>
+                    <form method="post" action="https://formspree.io/f/mwkazokg">
+                        <div class="field half first">
+                            <input type="text" name="name" id="full-name" placeholder="Nombre"/>
+                        </div>
+                        <div class="field half">
+                            <input type="text" name="_replyto" id="email" placeholder="Email"/>
+                        </div>
+                        <div class="field">
+                            <textarea name="message" id="message" rows="4" placeholder="Mensage"></textarea>
+                        </div>
+                        <input type="hidden" name="_subject" id="email-subject" value="Contacto por la web">
+                        <ul class="actions">
+                            <li><input type="submit" value="Enviar" class="special"/></li>
+                            <li><input type="reset" value="Reset"/></li>
+                        </ul>
+                    </form>
+                </section>
+            </div>
+        </div>
+    </footer>
+
 <!-- Scripts -->
 <script src="assets/js/jquery.min.js"></script>
 <script src="assets/js/jquery.poptrox.js"></script>
@@ -7,3 +69,13 @@
 <!--[if lte IE 8]>
 <script src="assets/js/ie/respond.min.js"></script><![endif]-->
 <script src="assets/js/main.js"></script>
+
+<!-- Home slideshow -->
+<script defer="">
+    function cycle(){
+        $('#home :last').animate({opacity:0}, 1000, function() {
+            $(this).prependTo('#home').css({opacity:1});
+        });
+    }
+    window.setInterval(cycle, 6000);
+</script>

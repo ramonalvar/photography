@@ -1,18 +1,20 @@
 # Base configs
-baseurl: "https://ramonalvar.github.io/photography"
+baseurl: "/ramonalvar.github.io/photography"
 image_fulls_loc: "/images/fulls"
 image_thumbs_loc: "/images/thumbs"
 google_analytics: "UA-46465113-2"
 
 # UI configs
-title: "Photography by Ramon Alvarez"
+title: "Fotografía de Ramón Álvarez"
 subtitle: "Experience beauty with your naked eyes!"
-author: "Ramon Alvarez"
+author: "Ramón Álvarez"
 header:
- title: "Photography"
- subtitle: "by Ramon Alvarez"
+ title: "FOTOGRAFÍA"
+ subtitle: "de Ramón Álvarez"
+quote: "The human body is the best picture of the human soul." 
+quote_author: "Ludwig Wittgenstein"
 footer:
- name: "¡Hola!, me llamo Ramon Alvarez"
+ name: "¡Hola!, me llamo Ramón Álvarez"
  bio: "Soy un fotógrafo especializado en fotografia de moda y artistica. Realizo books y otros trabajos. No dudes en preguntar!"
  github: "¿Quieres ver el código de mi web? Pásate por <a href=\"https://github.com/ramonalvar/photography\"></a> ;)"
 social_urls:
