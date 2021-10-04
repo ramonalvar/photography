@@ -62,13 +62,26 @@
 
 <!-- Scripts -->
 <script src="assets/js/jquery.min.js"></script>
+<!-- Preloader -->
+<script type="text/javascript">
+    //<![CDATA[
+    $(window).load(function() { // makes sure the whole site is loaded
+        $('#loader').fadeOut(); // will first fade out the loading animation
+            $('#loader-wrapper').delay(350).fadeOut('slow'); // will fade out the white DIV that covers the website.
+        $('body').delay(350).css({'overflow-y':'visible'});
+    })
+    //]]>
+</script>
 <script src="assets/js/jquery.poptrox.js"></script>
 <script src="assets/js/skel.min.js"></script>
 <script src="assets/js/util.js"></script>
 <script src="assets/js/exif.js"></script>
 <!--[if lte IE 8]>
 <script src="assets/js/ie/respond.min.js"></script><![endif]-->
+<script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
 <script src="assets/js/main.js"></script>
+
+
 
 <!-- Home slideshow -->
 <script defer="">
@@ -79,3 +92,4 @@
     }
     window.setInterval(cycle, 6000);
 </script>
+

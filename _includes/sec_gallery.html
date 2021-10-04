@@ -1,0 +1,59 @@
+<div id="gallery" style="display:none; background-image: url('{{ site.baseurl }}/images/bg.jpg');">
+    
+        <!-- MAIN POSTS -->
+        <div class="main-posts">
+            <div class="container">
+                <div class="row">
+                    <div class="isotope-gallery isotope-true">
+                        {% for image in site.static_files %}
+                        {% if image.path contains 'fulls' %}
+                        <div class="isotope-post col-md-4 col-sm-6">
+                            <div class="post-thumb">
+                                
+                                <img src="{{ site.baseurl }}/images/fulls/{{ image.name }}" alt="">
+                                <!-- <article class="thumb">
+                                    <a href="{{ site.baseurl }}/images/fulls/{{ image.name }}" class="image">
+                                        <img src="{{ site.baseurl }}/images/fulls/{{ image.name }}" alt=""data-name="{{ image.name }}"/>
+                                    </a>
+                                </article> -->
+                                <div class="title-over">
+                                    <h4><a href="#">{{ image.name }}</a></h4>
+                                </div>
+                                <div class="post-hover text-center">
+                                    <div class="inside">
+                                        <i class="fa fa-plus"></i>
+                                        <span class="date">25 Jan 2084</span>
+                                        <h4><a href="#">Title one goes here</a></h4>
+                                        <p>Cum sociis natoque penatibus et magnis dis parturient</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> <!-- /.isotope-post -->
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+    <!-- Main -->
+    <!-- <div id="main">
+        {% for image in site.static_files %}
+        {% if image.path contains 'fullso' %}
+        <article class="thumb">
+            <a href="{{ site.baseurl }}{{ site.image_fulls_loc }}/{{ image.name }}" class="image">
+                <img src="{{ site.baseurl }}{{ site.image_fulls_loc }}/{{ image.name }}" alt=""
+                     data-name="{{ image.name }}"/></a>
+            <h2></h2>
+            <p></p>
+        </article>
+        {% endif %}
+        {% endfor %}
+    </div> -->
+
+</div>

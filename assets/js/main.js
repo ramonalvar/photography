@@ -16,6 +16,53 @@
         xsmall: '(max-width: 480px)'
     });
 
+    // Navigation
+    $("#navbar").children().each(function(){
+        $(this).click(function() {
+            var target = $(this).attr('id').split('_')[0];
+            console.log(target);
+            $("#"+target).fadeIn('slow').siblings("div").fadeOut('slow');
+        });
+    });
+
+    // Gallery
+    $(window).load(function () {
+        blogisotope = function () {
+            var e, t = $(".isotope-gallery").width(),
+                n = Math.floor(t);
+            if ($(".isotope-gallery").hasClass("isotope-true") === true) {
+                n = Math.floor(t * .3033);
+                e = Math.floor(t * .04);
+                if ($(window).width() < 1023) {
+                    if ($(window).width() < 768) {
+                        n = Math.floor(t * 1)
+                    } else {
+                        n = Math.floor(t * .48)
+                    }
+                } else {
+                    n = Math.floor(t * .3033)
+                }
+            }
+            return e
+        };
+        var r = $(".isotope-gallery");
+        bloggingisotope = function () {
+            r.isotope({
+                itemSelector: ".isotope-post",
+                animationEngine: "jquery",
+                masonry: {
+                    gutterWidth: blogisotope()
+                }
+            })
+        };
+        bloggingisotope();
+        $(window).smartresize(bloggingisotope)
+    })
+
+
+
+
+    // Stuff
     $(function () {
 
         var $window = $(window),
@@ -65,28 +112,24 @@
         // Fix: Placeholder polyfill.
         $('form').placeholder();
 
-        // Panels.
+        // Footer Pannel.
         var $panels = $('.panel');
 
         $panels.each(function () {
-
             var $this = $(this),
                 $toggles = $('[href="#' + $this.attr('id') + '"]'),
                 $closer = $('<div class="closer" />').appendTo($this);
-
             // Closer.
             $closer
                 .on('click', function (event) {
                     $this.trigger('---hide');
                 });
-
             // Events.
             $this
                 .on('click', function (event) {
                     event.stopPropagation();
                 })
                 .on('---toggle', function () {
-
                     if ($this.hasClass('active'))
                         $this.triggerHandler('---hide');
                     else
@@ -94,28 +137,21 @@
 
                 })
                 .on('---show', function () {
-
                     // Hide other content.
                     if ($body.hasClass('content-active'))
                         $panels.trigger('---hide');
-
                     // Activate content, toggles.
                     $this.addClass('active');
                     $toggles.addClass('active');
-
                     // Activate body.
                     $body.addClass('content-active');
-
                 })
                 .on('---hide', function () {
-
                     // Deactivate content, toggles.
                     $this.removeClass('active');
                     $toggles.removeClass('active');
-
                     // Deactivate body.
                     $body.removeClass('content-active');
-
                 });
 
             // Toggles.
@@ -123,44 +159,31 @@
                 .removeAttr('href')
                 .css('cursor', 'pointer')
                 .on('click', function (event) {
-
                     event.preventDefault();
                     event.stopPropagation();
-
                     $this.trigger('---toggle');
-
                 });
-
         });
 
-        // Global events.
+
+        // Footer: hide on body click or ESC
         $body
             .on('click', function (event) {
-
                 if ($body.hasClass('content-active')) {
-
                     event.preventDefault();
                     event.stopPropagation();
-
                     $panels.trigger('---hide');
-
                 }
-
             });
 
         $window
             .on('keyup', function (event) {
-
                 if (event.keyCode == 27
                     && $body.hasClass('content-active')) {
-
                     event.preventDefault();
                     event.stopPropagation();
-
                     $panels.trigger('---hide');
-
                 }
-
             });
 
         // Header.
@@ -182,28 +205,22 @@
                 .removeAttr('href')
                 .css('cursor', 'pointer')
                 .on('click', function (event) {
-
                     event.preventDefault();
                     event.stopPropagation();
-
                     window.location.href = href;
-
                 });
-
         });
 
-        // Footer.
+        // Footer formatting
         var $footer = $('#footer');
 
         // Copyright.
         // This basically just moves the copyright line to the end of the *last* sibling of its current parent
         // when the "medium" breakpoint activates, and moves it back when it deactivates.
         $footer.find('.copyright').each(function () {
-
             var $this = $(this),
                 $parent = $this.parent(),
                 $lastParent = $parent.parent().children().last();
-
             skel
                 .on('+medium', function () {
                     $this.appendTo($lastParent);

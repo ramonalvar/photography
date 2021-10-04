@@ -1,0 +1,7 @@
+<div id="home">
+    {% for image in site.static_files %}
+    {% if image.path contains 'home_slideshow' %}
+    <div class="slides" style="background-image: url('{{ site.baseurl }}{{ image.path }}');"></div>
+    {% endif %}
+    {% endfor %}
+</div>
