@@ -1,0 +1,21 @@
+
+/* Gallery */
+#gallery{
+	background-size: cover;
+	width: 100%;
+
+}
+
+.grid-item-content {
+	background-color: whitesmoke;
+	position: relative !important;
+}
+/* .grid-item { 
+	width: 33.33%;
+} */
+.grid-item-content {
+	width: 100%;
+}
+.grid-item-content img{
+	width: 100%;
+}
