@@ -1,15 +1,38 @@
 <div id="gallery" class="container-fluid" style="background-image: url('{{ site.baseurl }}/images/bg.jpg');">
-    <!-- Container element for Masonry -->
+    <!-- Liquid: Automatic tag extraction from folder names in gallery directory -->
+    {% assign tags = "" %}
+    {% for image in site.static_files %}
+    {% if image.path contains 'gallery' %}
+    {% assign tags = tags | append: image.path | remove: "/images/gallery/" | replace: "/", " " | truncatewords: 1, "" | append: "," %}
+    {% endif %}
+    {% endfor %}
+    {% assign tags = tags | split:"," | uniq %}
+
+    <!-- Filter and Sorting toolbar -->
+    <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+        <div class="btn btn-primary me-2"data-bs-toggle="collapse" data-bs-target="#tagList">Tags</div>
+        <div class="btn-group" role="group" aria-label="Tag button group">
+            <div class="collapse" id="tagList">
+                <button type="button" data-filter="*" class="btn btn-outline-primary m-0">All</button>
+                {% for tag in tags %}
+                <button type="button" data-filter=".{{tag | downcase }}" class="btn btn-outline-primary m-0">{{tag}}</button>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <!-- Container element for Isotope+Bootstrap Gallery -->
     <div class="grid row">
         <!-- add sizing element for columnWidth -->
         <div class="grid-sizer col-4"></div>
 
         {% for image in site.static_files %}
         {% if image.path contains 'gallery' %}
-        <div class="grid-item col-4 p-4">
+        {% assign tag = image.path | downcase | split: "/" | slice: -2 %}
+        <div class="grid-item col-4 p-4 {{tag}}">
             <!-- wrap item content in its own element -->
             <div class="grid-item-content p-4">
-                <img src="{{ site.baseurl }}/{{ image.path }}" alt="">
+                <img src="{{ site.baseurl }}{{ image.path }}" alt="">
                 <div class="image-title">
                     <a href="#">Titulo</a>
                 </div>

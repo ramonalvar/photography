@@ -2,20 +2,37 @@
 /* Gallery */
 #gallery{
 	background-size: cover;
-	width: 100%;
-
 }
 
+.btn-outline-primary {
+	--button-color: rgb(55, 20, 95);
+	color: var(--button-color);
+	border-color: var(--button-color);
+}
+.btn-outline-primary:hover{
+	background-color: rgb(37, 11, 66);
+	border-color: rgb(37, 11, 66);
+}
+.btn-outline-primary:focus{
+	box-shadow: 0 0 0 .25rem rgba(37, 11, 66, 0.5);
+}
+.btn-primary {
+	--button-color: rgb(55, 20, 95);
+	border-color: var(--button-color);
+	background-color: var(--button-color);
+}
+.btn-primary:hover{
+	background-color: rgb(37, 11, 66);
+	border-color: rgb(37, 11, 66);
+}
+.btn-primary:active{
+	box-shadow: 0 0 0 .25rem rgba(37, 11, 66, 0.5);
+}
 .grid-item-content {
 	background-color: whitesmoke;
-	position: relative !important;
-}
-/* .grid-item { 
-	width: 33.33%;
-} */
-.grid-item-content {
-	width: 100%;
 }
 .grid-item-content img{
 	width: 100%;
 }
+
+/* */
