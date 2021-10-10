@@ -24,12 +24,12 @@
     <!-- Container element for Isotope+Bootstrap Gallery -->
     <div class="grid row">
         <!-- add sizing element for columnWidth -->
-        <div class="grid-sizer col-4"></div>
+        <div class="grid-sizer col col-md-6 col-xl-4"></div>
 
         {% for image in site.static_files %}
         {% if image.path contains 'gallery' %}
         {% assign tag = image.path | downcase | split: "/" | slice: -2 %}
-        <div class="grid-item col-4 p-4 {{tag}}">
+        <div class="grid-item col col-md-6 col-xl-4 p-4 {{tag}}">
             <!-- wrap item content in its own element -->
             <div class="grid-item-content p-4">
                 <img src="/photography/{{ image.path }}" alt="">
